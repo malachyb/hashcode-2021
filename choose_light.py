@@ -8,5 +8,4 @@ def choose(dict):
     return street
     
 if __name__ == '__main__':
-    dict = {"street_1":1, "street_2": 3}
     choose(dict)
