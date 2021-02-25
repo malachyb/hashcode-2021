@@ -4,7 +4,7 @@ from take_input import take_input
 from street_input import street_input
 from make_table import make_table
 from intersection import intersection
-from choose_light import choose_light
+from choose_light import choose
 
 def main():
     file = input()
