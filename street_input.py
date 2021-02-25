@@ -3,7 +3,7 @@ def street_input(filename, intersections, streets, cars):
     dict_streets = {}
     with open(filename, "r") as fd:
         lines = fd.readlines()
-        for i in range(1, streets):
+        for i in range(1, streets +1):
             line = lines[i].strip().split()
 
             list_intersections[int(line[0])].append(line[2])
