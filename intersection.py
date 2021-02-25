@@ -2,7 +2,8 @@ from collections import defaultdict
 
 def intersection(lst):
     inter = defaultdict(int)
-    for position in lst:
-        inter[position] += 1
+    for _, position in lst:
+        if position is not None:
+            inter[position] += 1
     
     return dict(inter)
