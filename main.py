@@ -12,11 +12,9 @@ def main():
 
     list_intersections, dict_streets, list_cars = street_input(file, intersections, streets, cars)
 
-    print(dict_streets)
-
     aidans_table = make_table(list_cars, dict_streets, duration)
 
-    dict_intersections = intersection(list_cars)
+    dict_intersections = intersection(aidans_table[0])
 
 if __name__ == '__main__':
     main()
