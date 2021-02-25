@@ -16,9 +16,16 @@ def main():
     aidans_table = make_table(list_cars, dict_streets, duration)
 
     while len(aidans_table) > 1:
-        dict_intersections = intersection(aidans_table[0])
+        intersections = {}
+        for curr_street, curr_intersection in enumerate(aidans_table[0]):
+            if curr_intersection not in intersections:
+                intersections[curr_intersection] = [(curr_street, curr_intersection)]
+            else:
+                intersections[curr_intersection].append((curr_street, curr_intersection))
 
-        light = choose(dict_intersections)
+        dict_intersections = [intersection(row) for row in intersections.values()]
+
+        light = [choose(dict_intersection) for dict_intersection in dict_intersections]
 
         aidans_table = progress(light, aidans_table)
 

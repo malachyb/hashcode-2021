@@ -3,13 +3,20 @@ def make_table(cars, streets, max_time):
     tmp_cars = [car[0] for car in cars]
     for i, car in enumerate(cars):
         time = 0
-        for name in car:
-            street = streets[name]
-            prev_time = time
-            pos_list[time][i] = (tmp_cars[i], name)
-            time += int(street["time"])
-            tmp_cars[i] = name
-            for j in range(prev_time + 1, time):
-                if j < len(pos_list):
-                    pos_list[j][i] = (tmp_cars[i], None)
+        for t, name in enumerate(car):
+            if time < len(pos_list):
+                street = streets[name]
+                prev_time = time
+                if t + 1 < len(car):
+                    try:
+                        pos_list[time][i] = (tmp_cars[i],
+                                             next(iter(set(streets[name]["time"]).intersection(
+                                                 set(streets[car[t + 1]]["time"])))))
+                    except StopIteration:
+                        pos_list[time][i] = (tmp_cars[i], None)
+                time += int(street["time"])
+                tmp_cars[i] = name
+                for j in range(prev_time + 1, time):
+                    if j < len(pos_list):
+                        pos_list[j][i] = (tmp_cars[i], None)
     return pos_list
