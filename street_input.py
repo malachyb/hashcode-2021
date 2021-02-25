@@ -12,7 +12,7 @@ def street_input(filename, intersections, streets, cars):
             dict_streets[line[2]] = {"time": line[3], "intersections": line[0:2]}
         list_cars = []
         for i in range(cars):
-            line = lines[i].strip().split()
+            line = lines[i + streets + 1].strip().split()
             list_cars.append(line[1:])
 
     return list_intersections, dict_streets, list_cars
