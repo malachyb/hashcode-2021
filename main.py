@@ -5,6 +5,7 @@ from street_input import street_input
 from make_table import make_table
 from intersection import intersection
 from choose_light import choose
+from progress import progress
 
 def main():
     file = input()
@@ -14,7 +15,12 @@ def main():
 
     aidans_table = make_table(list_cars, dict_streets, duration)
 
-    dict_intersections = intersection(aidans_table[0])
+    while len(aidans_table) > 1:
+        dict_intersections = intersection(aidans_table[0])
+
+        light = choose(dict_intersections)
+
+        aidans_table = progress(light, aidans_table)
 
 if __name__ == '__main__':
     main()
