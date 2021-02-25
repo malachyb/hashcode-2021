@@ -10,5 +10,6 @@ def make_table(cars, streets, max_time):
             time += int(street["time"])
             tmp_cars[i] = name
             for j in range(prev_time + 1, time):
-                pos_list[time][j] = (tmp_cars[i], None)
+                if j < len(pos_list):
+                    pos_list[j][i] = (tmp_cars[i], None)
     return pos_list
