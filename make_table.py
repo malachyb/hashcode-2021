@@ -7,7 +7,7 @@ def make_table(cars, streets, max_time):
             street = streets[name]
             prev_time = time
             pos_list[time][i] = (tmp_cars[i], name)
-            time += street["time"]
+            time += int(street["time"])
             tmp_cars[i] = name
             for j in range(prev_time + 1, time):
                 pos_list[time][j] = (tmp_cars[i], None)
